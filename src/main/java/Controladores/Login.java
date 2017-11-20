@@ -89,6 +89,7 @@ public class Login extends HttpServlet {
                 sesionUsuario.setMaxInactiveInterval(20);
                 System.out.println("holi llege ");
                 response.sendRedirect("index.jsp");
+                System.out.println("holi");
             } else {
                 response.sendRedirect("InsertarEmpleados.jsp");
                 
