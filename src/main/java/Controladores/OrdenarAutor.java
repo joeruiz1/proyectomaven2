@@ -9,7 +9,10 @@ import DAO.CrudLibro;
 import VO.Libro;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -60,6 +63,8 @@ public class OrdenarAutor extends HttpServlet {
                 request.setAttribute("lis", null);
             }
             rq.forward(request, response);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(OrdenarAutor.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }

@@ -9,6 +9,9 @@ import DAO.CrudEmpleado;
 import VO.Empleado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -74,7 +77,12 @@ public class ControlEmpleado extends HttpServlet {
         if (contrasena.trim().length() > 0 && cedula.trim().length() > 0  ) {
             resultado = true;
             Empleado em = new Empleado(nombre, cedulas, contrasena, usuario);
-            CrudEmpleado c = new CrudEmpleado();
+            CrudEmpleado c = null;
+            try {
+                c = new CrudEmpleado();
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(ControlEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
             c.agregarEmpleado(em);
          
             RequestDispatcher rq = request.getRequestDispatcher("InsertarEmpleados.jsp");

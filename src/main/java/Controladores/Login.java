@@ -9,6 +9,9 @@ import DAO.UserDao;
 import VO.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -78,7 +81,12 @@ public class Login extends HttpServlet {
         datosUsuario.setPass(pass);
 
         //Validaciones
-        UserDao userDao = new UserDao();
+        UserDao userDao = null;
+        try {
+            userDao = new UserDao();
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Usuario sesion = userDao.validar(datosUsuario);
         HttpSession sesionUsuario = request.getSession();
         Usuario _sesionUsuario = (Usuario) sesionUsuario.getAttribute("usuario");

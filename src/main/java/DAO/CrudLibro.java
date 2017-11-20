@@ -7,6 +7,7 @@ package DAO;
 
 import Conexion.DbUtil;
 import VO.Libro;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +24,7 @@ public class CrudLibro {
 
     private Connection connection;
 
-    public CrudLibro() {
+    public CrudLibro() throws URISyntaxException {
         connection = DbUtil.getConnection();
     }
 

@@ -8,6 +8,7 @@ package DAO;
 import Conexion.DbUtil;
 import VO.Empleado;
 import VO.Libro;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +24,7 @@ import java.util.List;
 public class CrudEmpleado {
         private Connection connection;
 
-    public CrudEmpleado() {
+    public CrudEmpleado() throws URISyntaxException {
         connection = DbUtil.getConnection();
     }
 

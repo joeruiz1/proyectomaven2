@@ -7,6 +7,7 @@ package DAO;
 
 import Conexion.DbUtil;
 import VO.Usuario;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ import java.sql.SQLException;
 public class UserDao {
    	private Connection connection;
 
-	public UserDao() {
+	public UserDao() throws URISyntaxException {
 		connection = DbUtil.getConnection();
 	}
 

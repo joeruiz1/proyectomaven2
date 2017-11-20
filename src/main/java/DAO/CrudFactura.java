@@ -8,6 +8,7 @@ package DAO;
 import Conexion.DbUtil;
 import VO.Factura;
 import VO.Libro;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +25,7 @@ public class CrudFactura {
 
     private Connection connection;
 
-    public CrudFactura() {
+    public CrudFactura() throws URISyntaxException {
         connection = DbUtil.getConnection();
     }
 

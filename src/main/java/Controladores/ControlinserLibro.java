@@ -9,6 +9,9 @@ import DAO.CrudLibro;
 import VO.Libro;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +50,12 @@ public class ControlinserLibro extends HttpServlet {
         if (id.trim().length() > 0 && nombre.trim().length() > 0) {
             resultado = true;
             Libro libro =new Libro(id_Libro, nombre, autor, edi, precio, estado);
-           CrudLibro c=new CrudLibro();
+           CrudLibro c = null;
+           try {
+               c = new CrudLibro();
+           } catch (URISyntaxException ex) {
+               Logger.getLogger(ControlinserLibro.class.getName()).log(Level.SEVERE, null, ex);
+           }
            c.agregarLibro(libro);
 
             RequestDispatcher rq = request.getRequestDispatcher("InsertarLibro.jsp");
