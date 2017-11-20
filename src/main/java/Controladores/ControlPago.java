@@ -84,7 +84,7 @@ public class ControlPago extends HttpServlet {
                 Logger.getLogger(ControlPago.class.getName()).log(Level.SEVERE, null, ex);
             }
             p.agregarPago(f);
-            RequestDispatcher rq = request.getRequestDispatcher("InsertarFactura.jsp");
+            RequestDispatcher rq = request.getRequestDispatcher("insertarFactura.jsp");
 
             if (resultado == true) {
                 request.setAttribute("resultado", true);
