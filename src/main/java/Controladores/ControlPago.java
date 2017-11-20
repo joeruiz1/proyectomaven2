@@ -74,7 +74,7 @@ public class ControlPago extends HttpServlet {
         String nombre = request.getParameter("medioPago");
 
         int idp = Integer.parseInt(id);
-        if (id.trim().length() > 0 ) {
+        if (id.trim().length() > 0 && nombre.trim().length()>0) {
             resultado = true;
             FormaPago f = new FormaPago(idp, nombre);
             Pago p = null;
@@ -85,12 +85,13 @@ public class ControlPago extends HttpServlet {
             }
             p.agregarPago(f);
             RequestDispatcher rq = request.getRequestDispatcher("insertarFactura.jsp");
-
+            System.out.println("opop");
             if (resultado == true) {
                 request.setAttribute("resultado", true);
             } else {
                 request.setAttribute("resultado", false);
             }
+
 
             rq.forward(request, response);
         } else {
